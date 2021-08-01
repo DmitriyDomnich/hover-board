@@ -1,14 +1,22 @@
 const board = document.getElementById('board');
 const colors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#2E2B5F', '#8B00FF'];
-const SQUARES_NUMBER = 500;
+const fullHeight = document.body.clientHeight;
+const fullWidth = document.body.clientWidth;
 
-for (let i = 0; i < SQUARES_NUMBER; i++) {
-    const square = document.createElement('div');
-    square.classList.add('square');
+let rows = +((fullHeight * 75 / 100) / 20).toFixed();
 
-    square.addEventListener('mouseover', () => setColor(square));
-    square.addEventListener('mouseleave', () => removeColor(square));
-    board.appendChild(square);
+let cols = +((fullWidth * 60 / 100) / 20).toFixed();
+
+
+for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+
+        square.addEventListener('mouseover', () => setColor(square));
+        square.addEventListener('mouseleave', () => removeColor(square));
+        board.appendChild(square);
+    }
 }
 
 function setColor(square) {
